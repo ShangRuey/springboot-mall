@@ -13,6 +13,7 @@ public class Product {
     private Integer stock;
     private String description;
     private Date created_date;
+    private Date last_modified_date;
 
     public Integer getProduct_id() {
         return product_id;
@@ -86,5 +87,5 @@ public class Product {
         this.last_modified_date = last_modified_date;
     }
 
-    Date last_modified_date;
+
 }
