@@ -1,0 +1,25 @@
+package com.shangruey.springbootmall.service.impl;
+
+import com.shangruey.springbootmall.dao.UserDao;
+import com.shangruey.springbootmall.dto.UserRegisterRequest;
+import com.shangruey.springbootmall.model.User;
+import com.shangruey.springbootmall.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+@Component
+public class UserServiceImpl implements UserService {
+
+    @Autowired
+    private UserDao userDao;
+
+    @Override
+    public Integer register(UserRegisterRequest userRegisterRequest) {
+        return userDao.createUser(userRegisterRequest);
+    }
+
+    @Override
+    public User getUserById(Integer userId) {
+        return userDao.getUserById(userId);
+    }
+}
