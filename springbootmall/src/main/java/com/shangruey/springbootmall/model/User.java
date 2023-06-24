@@ -1,11 +1,17 @@
 package com.shangruey.springbootmall.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.Date;
 
 public class User {
     Integer userId;
     String email;
+
+    @JsonIgnore
     String password;
+
     Date createdDate;
     Date lastModifieDate;
 
