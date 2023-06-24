@@ -15,17 +15,25 @@ import java.util.List;
 
 @RestController
 public class ProductController {
+
     @Autowired
     private ProductService productService;
 
     @GetMapping("/products")
     public ResponseEntity<List<Product>> getProducts(
-            @RequestParam (required = false)ProductCategory category,
-            @RequestParam (required = false) String search
+            //查詢條件 Filtering
+            @RequestParam (required = false)ProductCategory category, //種類
+            @RequestParam (required = false) String search, //商品名關鍵字
+
+            //排序 Sorting
+            @RequestParam (defaultValue = "created_date") String orderBy, // 用什麼排序
+            @RequestParam (defaultValue = "desc") String sort  //升 降續
     ) {
         ProductQueryParams productQueryParams = new ProductQueryParams();
         productQueryParams.setCategory(category);
         productQueryParams.setSearch(search);
+        productQueryParams.setOrderBy(orderBy);
+        productQueryParams.setSort(sort);
 
         List<Product> productList = productService.getProducts(productQueryParams);
 
